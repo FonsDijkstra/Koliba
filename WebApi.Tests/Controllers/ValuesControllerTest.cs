@@ -6,13 +6,13 @@ using System.Text;
 using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebApi;
-using WebApi.Controllers;
 
 namespace WebApi.Tests.Controllers
 {
     [TestClass]
     public class ValuesControllerTest
     {
+        /*
         [TestMethod]
         public void Get()
         {
@@ -77,5 +77,6 @@ namespace WebApi.Tests.Controllers
 
             // Assert
         }
+        */
     }
 }
