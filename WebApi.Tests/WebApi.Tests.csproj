@@ -68,7 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReservationControllerTest.cs" />
+    <Compile Include="Controllers\ReservationControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

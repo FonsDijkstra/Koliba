@@ -2,7 +2,7 @@
 using System;
 using Xunit;
 
-namespace Koliba.WebApi.Tests
+namespace Koliba.WebApi.Tests.Controllers
 {
     public class ReservationControllerTest
     {
