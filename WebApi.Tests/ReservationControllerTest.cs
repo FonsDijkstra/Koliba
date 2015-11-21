@@ -1,14 +1,16 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Koliba.WebApi.Controllers;
+using System;
+using Xunit;
 
-namespace WebApi.Tests
+namespace Koliba.WebApi.Tests
 {
-    [TestClass]
-    public class UnitTest1
+    public class ReservationControllerTest
     {
-        [TestMethod]
-        public void TestMethod1()
+        [Fact]
+        public void GetOpeningTimes()
         {
+            var sut = new ReservationController();
+            Assert.All(sut.GetOpeningTimes(), ot => Assert.True(ot.Start.Date >= DateTime.Today));
         }
     }
 }
