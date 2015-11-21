@@ -9,8 +9,8 @@
     <ProjectGuid>{EFDCB73D-B705-47CB-8169-53AFF9C8822A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApp.Tests</RootNamespace>
-    <AssemblyName>WebApp.Tests</AssemblyName>
+    <RootNamespace>Koliba.WebApp.Tests</RootNamespace>
+    <AssemblyName>Koliba.WebApp.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
