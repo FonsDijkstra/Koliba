@@ -7,6 +7,8 @@ namespace Koliba.WebApi.Controllers
 {
     public class ReservationController : ApiController
     {
+        [HttpGet]
+        [Route("api/reservation/openingtimes")]
         public IEnumerable<OpeningTime> GetOpeningTimes()
         {
             return new[]
