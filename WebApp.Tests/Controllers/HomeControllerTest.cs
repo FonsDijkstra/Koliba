@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Koliba.WebApp.Controllers;
+using Xunit;
 
 namespace Koliba.WebApp.Tests.Controllers
 {
-    [TestClass]
     public class HomeControllerTest
     {
-        [TestMethod]
-        public void Index()
+        readonly HomeController sut;
+
+        public HomeControllerTest()
         {
-            // Arrange
-            HomeController controller = new HomeController();
+            sut = new HomeController();
+        }
 
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
+        [Fact]
+        public void Index_returns_view()
+        {
+            Assert.NotNull(sut.Index() is ViewResult);
         }
     }
 }
