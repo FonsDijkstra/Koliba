@@ -6,10 +6,16 @@ namespace Koliba.WebApi.Tests
 {
     public class ReservationControllerTest
     {
-        [Fact]
-        public void GetOpeningTimes()
+        private readonly ReservationController sut;
+
+        public ReservationControllerTest()
         {
-            var sut = new ReservationController();
+            sut = new ReservationController();
+        }
+
+        [Fact]
+        public void GetOpeningTimes_not_in_past()
+        {
             Assert.All(sut.GetOpeningTimes(), ot => Assert.True(ot.Start.Date >= DateTime.Today));
         }
     }
