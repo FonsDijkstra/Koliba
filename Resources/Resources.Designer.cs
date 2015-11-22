@@ -79,7 +79,7 @@ namespace Koliba.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reserveren.
+        ///   Looks up a localized string similar to Make reservations.
         /// </summary>
         public static string ReservationsHeader {
             get {
