@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Apps.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Koliba.Apps.Global" Language="C#" %>
