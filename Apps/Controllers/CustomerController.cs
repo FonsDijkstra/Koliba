@@ -5,7 +5,7 @@ namespace Koliba.Apps.Controllers
     public class CustomerController : Controller
     {
         [HttpGet]
-        [Route("home/index")]
+        [Route()]
         public ActionResult Index()
         {
             return View();
