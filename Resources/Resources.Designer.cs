@@ -86,5 +86,23 @@ namespace Koliba.Resources {
                 return ResourceManager.GetString("ReservationsHeader", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today.
+        /// </summary>
+        public static string TodayName {
+            get {
+                return ResourceManager.GetString("TodayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tomorrow.
+        /// </summary>
+        public static string TomorrowName {
+            get {
+                return ResourceManager.GetString("TomorrowName", resourceCulture);
+            }
+        }
     }
 }

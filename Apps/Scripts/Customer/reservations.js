@@ -23,7 +23,7 @@
             return { dates: [] };
         },
         componentDidMount: function () {
-            var url = 'api/reservation/dates/4';
+            var url = 'api/reservation/dates/5';
             $.ajax({
                 url: url,
                 dataType: 'json',
@@ -51,7 +51,7 @@
         render: function () {
             return (
                 React.createElement('button', null,
-                    this.props.date.DisplayName)
+                    this.props.date.Name)
             );
         }
     });

@@ -126,4 +126,10 @@
   <data name="ReservationsHeader" xml:space="preserve">
     <value>Reserveren</value>
   </data>
+  <data name="TodayName" xml:space="preserve">
+    <value>Vandaag</value>
+  </data>
+  <data name="TomorrowName" xml:space="preserve">
+    <value>Morgen</value>
+  </data>
 </root>

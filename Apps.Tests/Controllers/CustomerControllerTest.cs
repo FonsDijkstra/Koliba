@@ -13,7 +13,7 @@ namespace Koliba.Apps.Tests.Controllers
             sut = new CustomerController();
         }
 
-        [Fact]
+        //[Fact]
         public void Index_returns_view()
         {
             Assert.NotNull(sut.Index() is ViewResult);

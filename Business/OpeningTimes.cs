@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Koliba.Business
 {
@@ -9,11 +11,27 @@ namespace Koliba.Business
         public TimeSpan Duration;
     }
 
-    public struct ReservationDate
+    public struct OpeningDate
     {
-        public string Name;
         public DateTime Start;
         public TimeSpan Duration;
+
+        public string Name
+        {
+            get
+            {
+                var diff = Start.Date - DateTime.Today;
+                if (diff.Days == 0) {
+                    return Resources.Resources.TodayName;
+                } else if (diff.Days == 1) {
+                    return Resources.Resources.TomorrowName;
+                } else if (diff.Days < 7) {
+                    return Start.Date.ToString("dddd", CultureInfo.CurrentUICulture);
+                } else {
+                    return "ToDo";
+                }
+            }
+        }
     }
 
     public class OpeningTimes
@@ -27,29 +45,37 @@ namespace Koliba.Business
             { DayOfWeek.Sunday, new OpeningTime { Open = TimeSpan.FromHours(12), Duration = TimeSpan.FromHours(10) } },
         };
 
-        readonly IDictionary<DayOfWeek, OpeningTime> schedule;
-
         public OpeningTimes(IDictionary<DayOfWeek, OpeningTime> schedule)
         {
-            this.schedule = schedule;
+            Schedule = new ReadOnlyDictionary<DayOfWeek, OpeningTime>(schedule);
         }
 
-        public IEnumerable<ReservationDate> ReservationDates(DateTime now, int nofDaysAhead)
+        public IReadOnlyDictionary<DayOfWeek, OpeningTime> Schedule { get; }
+
+        public IEnumerable<OpeningDate> OpeningDates(DateTime from, int nofDaysAhead)
         {
-            var today = now.DayOfWeek;
-            var openingTime = schedule[today];
-            if (now.TimeOfDay < openingTime.Open + openingTime.Duration) {
-                yield return new ReservationDate {
-                    Start = now,
-                    Duration = openingTime.Open + openingTime.Duration - now.TimeOfDay,
-                };
+            OpeningTime openingTime;
+
+            var day = from.DayOfWeek;
+            if (Schedule.TryGetValue(day, out openingTime)) {
+                if (from.TimeOfDay < openingTime.Open) {
+                    yield return new OpeningDate {
+                        Start = from.Date.Add(openingTime.Open),
+                        Duration = openingTime.Duration,
+                    };
+                } else if (from.TimeOfDay < openingTime.Open + openingTime.Duration) {
+                    yield return new OpeningDate {
+                        Start = from,
+                        Duration = openingTime.Open + openingTime.Duration - from.TimeOfDay,
+                    };
+                }
             }
 
             for (int i = 1; i <= nofDaysAhead; ++i) {
-                var day = NextDay(today);
-                if (schedule.TryGetValue(day, out openingTime)) {
-                    yield return new ReservationDate {
-                        Start = now.Date.AddDays(i).Add(openingTime.Open),
+                day = NextDay(day);
+                if (Schedule.TryGetValue(day, out openingTime)) {
+                    yield return new OpeningDate {
+                        Start = from.Date.AddDays(i).Add(openingTime.Open),
                         Duration = openingTime.Duration,
                     };
                 }
