@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Koliba.Business
 {
@@ -26,6 +23,17 @@ namespace Koliba.Business
                 return DayOfWeek.Monday;
             } else {
                 throw new ArgumentOutOfRangeException(nameof(day));
+            }
+        }
+
+        public static string ToStartSentence(this string str, CultureInfo culture)
+        {
+            if (str == null) {
+                return str;
+            } else if (str.Length > 1) {
+                return char.ToUpper(str[0], culture) + str.Substring(1);
+            } else {
+                return str.ToUpper(culture);
             }
         }
     }

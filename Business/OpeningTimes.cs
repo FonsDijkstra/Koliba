@@ -26,7 +26,7 @@ namespace Koliba.Business
                 } else if (diff.Days == 1) {
                     return Resources.Resources.TomorrowName;
                 } else if (diff.Days < 7) {
-                    return Start.Date.ToString("dddd", CultureInfo.CurrentUICulture);
+                    return Start.Date.ToString("dddd", CultureInfo.CurrentUICulture).ToStartSentence(CultureInfo.CurrentUICulture);
                 } else {
                     return "ToDo";
                 }
