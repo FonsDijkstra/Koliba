@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Collections;
 
-namespace Koliba.Resources.Test
+namespace Koliba.Resources.Tests
 {
     public class ResourcesTest
     {
