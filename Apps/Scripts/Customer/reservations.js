@@ -9,7 +9,7 @@
         },
         render: function () {
             return (
-                React.createElement('a', { 'href': '#', styleName: 'display:block', 'onClick': this.onClick },
+                React.createElement('a', { 'href': '#', className: 'reservationsBox', 'onClick': this.onClick },
                     React.createElement('div', { className: 'panel panel-default' },
                         React.createElement('div', { className: 'panel-body' },
                             React.createElement('h2', null,
@@ -38,7 +38,7 @@
         },
         render: function () {
             var specificDates = this.state.dates.map(function (date) {
-                return React.createElement(SpecificDate, { 'key': date.DisplayName, 'date': date });
+                return React.createElement(SpecificDate, { 'key': date.Name, 'date': date });
             });
             return (
                 React.createElement('div', null,
@@ -48,10 +48,25 @@
     });
 
     var SpecificDate = React.createClass({
+        onClick: function () {
+
+        },
         render: function () {
             return (
-                React.createElement('button', null,
+                React.createElement('button', { className: 'specificDate', 'onClick': this.onClick },
                     this.props.date.Name)
+            );
+        }
+    });
+
+    var TimeSelector = React.createClass({
+        render: function () {
+            var specificDates = this.state.dates.map(function (date) {
+                return React.createElement(SpecificDate, { 'key': date.Name, 'date': date });
+            });
+            return (
+                React.createElement('div', null,
+                    specificDates)
             );
         }
     });

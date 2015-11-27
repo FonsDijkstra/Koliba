@@ -16,3 +16,16 @@ textarea {
     max-width: 280px;
 }
 
+.logo {
+    display:block;
+    width: 200px;
+    height: 126px;
+}
+
+.reservationsBox {
+    display:block;
+}
+
+.specificDate {
+    display:block;
+}
