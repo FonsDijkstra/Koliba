@@ -1,6 +1,6 @@
-﻿using Koliba.Apps.Controllers;
-using System;
+﻿using System;
 using Xunit;
+using Koliba.Apps.Controllers;
 
 namespace Koliba.Apps.Tests.Controllers
 {

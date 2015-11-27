@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Koliba.Apps.Models
+namespace Koliba.Business
 {
-    public class OpeningSchedule
+    public struct OpeningTime
     {
-        static readonly IDictionary<DayOfWeek, OpeningTime> normalSchedule = new Dictionary<DayOfWeek, OpeningTime> {
+        public TimeSpan Open;
+        public TimeSpan Duration;
+    }
+
+    public struct ReservationDate
+    {
+        public string Name;
+        public DateTime Start;
+        public TimeSpan Duration;
+    }
+
+    public class OpeningTimes
+    {
+        public static readonly IDictionary<DayOfWeek, OpeningTime> SCHEDULE = new Dictionary<DayOfWeek, OpeningTime> {
             { DayOfWeek.Tuesday, new OpeningTime { Open = TimeSpan.FromHours(14), Duration = TimeSpan.FromHours(8) } },
             { DayOfWeek.Wednesday, new OpeningTime { Open = TimeSpan.FromHours(14), Duration = TimeSpan.FromHours(8) } },
             { DayOfWeek.Thursday, new OpeningTime { Open = TimeSpan.FromHours(14), Duration = TimeSpan.FromHours(8) } },
@@ -16,21 +27,27 @@ namespace Koliba.Apps.Models
             { DayOfWeek.Sunday, new OpeningTime { Open = TimeSpan.FromHours(12), Duration = TimeSpan.FromHours(10) } },
         };
 
+        readonly IDictionary<DayOfWeek, OpeningTime> schedule;
+
+        public OpeningTimes(IDictionary<DayOfWeek, OpeningTime> schedule)
+        {
+            this.schedule = schedule;
+        }
+
         public IEnumerable<ReservationDate> ReservationDates(DateTime now, int nofDaysAhead)
         {
             var today = now.DayOfWeek;
-            var schedule = normalSchedule[today];
-            if (now.TimeOfDay < schedule.Open + schedule.Duration) {
+            var openingTime = schedule[today];
+            if (now.TimeOfDay < openingTime.Open + openingTime.Duration) {
                 yield return new ReservationDate {
                     Start = now,
-                    Duration = schedule.Open + schedule.Duration - now.TimeOfDay,
+                    Duration = openingTime.Open + openingTime.Duration - now.TimeOfDay,
                 };
             }
 
             for (int i = 1; i <= nofDaysAhead; ++i) {
                 var day = NextDay(today);
-                OpeningTime openingTime;
-                if (normalSchedule.TryGetValue(day, out openingTime)) {
+                if (schedule.TryGetValue(day, out openingTime)) {
                     yield return new ReservationDate {
                         Start = now.Date.AddDays(i).Add(openingTime.Open),
                         Duration = openingTime.Duration,

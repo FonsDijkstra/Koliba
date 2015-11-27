@@ -78,6 +78,10 @@
       <Project>{E4840463-79BA-4672-9949-BFA3A44284D5}</Project>
       <Name>Apps</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{16732e22-16e2-4636-935d-e230d1414314}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

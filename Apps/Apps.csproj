@@ -134,9 +134,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\OpeningSchedule.cs" />
-    <Compile Include="Models\OpeningTime.cs" />
-    <Compile Include="Models\ReservationDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,8 +150,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{16732e22-16e2-4636-935d-e230d1414314}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{2dfbe586-bac6-4e4b-9232-3ff02fdae21d}</Project>
       <Name>Resources</Name>

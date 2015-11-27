@@ -1,10 +1,10 @@
-﻿using Koliba.Apps.Models;
-using Koliba.Resources;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web.Http;
+using Koliba.Resources;
+using Koliba.Business;
 
 namespace Koliba.Apps.Controllers
 {
@@ -34,7 +34,7 @@ namespace Koliba.Apps.Controllers
         [Route("api/reservation/dates/{nofDaysAhead}")]
         public IEnumerable<ReservationDate> Dates(int nofDaysAhead)
         {
-            return new OpeningSchedule().ReservationDates(DateTime.Now, nofDaysAhead);
+            return new OpeningTimes(OpeningTimes.SCHEDULE).ReservationDates(DateTime.Now, nofDaysAhead);
         }
     }
 }

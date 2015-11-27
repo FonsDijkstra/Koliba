@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using Koliba.Apps.Controllers;
 using Xunit;
+using Koliba.Apps.Controllers;
 
 namespace Koliba.Apps.Tests.Controllers
 {
