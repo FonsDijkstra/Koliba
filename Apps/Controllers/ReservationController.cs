@@ -31,14 +31,10 @@ namespace Koliba.Apps.Controllers
         }
 
         [HttpGet]
-        [Route("api/reservation/openingtimes")]
-        public IEnumerable<OpeningTime> GetOpeningTimes()
+        [Route("api/reservation/dates/{nofDaysAhead}")]
+        public IEnumerable<ReservationDate> Dates(int nofDaysAhead)
         {
-            return new[]
-            {
-                new OpeningTime { Start = DateTime.Today.AddHours(14), Duration = new TimeSpan(8, 0, 0) },
-                new OpeningTime { Start = DateTime.Today.AddDays(1).AddHours(12), Duration = new TimeSpan(10, 0, 0) },
-            };
+            return new OpeningSchedule().ReservationDates(DateTime.Now, nofDaysAhead);
         }
     }
 }

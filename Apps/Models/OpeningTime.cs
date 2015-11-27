@@ -2,9 +2,9 @@
 
 namespace Koliba.Apps.Models
 {
-    public class OpeningTime
+    public sealed class OpeningTime
     {
-        public DateTime Start;
+        public TimeSpan Open;
         public TimeSpan Duration;
     }
 }

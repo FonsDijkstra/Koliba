@@ -14,9 +14,10 @@ namespace Koliba.Apps.Tests.Controllers
         }
 
         [Fact]
-        public void GetOpeningTimes_not_in_past()
+        public void Dates_not_in_past()
         {
-            Assert.All(sut.GetOpeningTimes(), ot => Assert.True(ot.Start.Date >= DateTime.Today));
+            var now = DateTime.Now;
+            Assert.All(sut.Dates(3), date => Assert.True(date.Start >= now));
         }
     }
 }

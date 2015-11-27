@@ -18,25 +18,40 @@
         }
     });
 
-    var SpecificDate = React.createClass({
-        render: function () {
-            return (
-                React.createElement('button', null, this.props.date)
-            );
-        }
-    });
-
     var DateSelector = React.createClass({
         getInitialState: function () {
-            return { dates: ['test1', 'test2'] };
+            return { dates: [] };
+        },
+        componentDidMount: function () {
+            var url = 'api/reservation/dates/4';
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    this.setState({ dates: data });
+                }.bind(this),
+                error: function (xhr, status, err) {
+                    console.error(url, status, err.toString());
+                }.bind(this)
+            });
         },
         render: function () {
             var specificDates = this.state.dates.map(function (date) {
-                return React.createElement(SpecificDate, { 'date': date }, null);
+                return React.createElement(SpecificDate, { 'key': date.DisplayName, 'date': date });
             });
             return (
                 React.createElement('div', null,
                     specificDates)
+            );
+        }
+    });
+
+    var SpecificDate = React.createClass({
+        render: function () {
+            return (
+                React.createElement('button', null,
+                    this.props.date.DisplayName)
             );
         }
     });
