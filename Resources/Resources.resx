@@ -126,6 +126,24 @@
   <data name="ReservationsHeader" xml:space="preserve">
     <value>Make reservations</value>
   </data>
+  <data name="Time1730" xml:space="preserve">
+    <value>Five thirty</value>
+  </data>
+  <data name="Time1800" xml:space="preserve">
+    <value>Six o'clock</value>
+  </data>
+  <data name="Time1830" xml:space="preserve">
+    <value>Six thirty</value>
+  </data>
+  <data name="Time1900" xml:space="preserve">
+    <value>Seven o'clock</value>
+  </data>
+  <data name="Time1930" xml:space="preserve">
+    <value>Seven thirty</value>
+  </data>
+  <data name="Time2000" xml:space="preserve">
+    <value>Eight o'clock</value>
+  </data>
   <data name="TodayName" xml:space="preserve">
     <value>Today</value>
   </data>

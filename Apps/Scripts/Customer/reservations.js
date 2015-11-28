@@ -64,7 +64,7 @@
         },
         componentDidMount: function () {
             $.ajax({
-                url: 'api/reservation/times/5',
+                url: 'api/reservation/times',
                 type: 'POST',
                 dataType: 'json',
                 data: JSON.stringify(this.props.date),

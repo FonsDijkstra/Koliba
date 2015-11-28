@@ -88,6 +88,60 @@ namespace Koliba.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Five thirty.
+        /// </summary>
+        public static string Time1730 {
+            get {
+                return ResourceManager.GetString("Time1730", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Six o&apos;clock.
+        /// </summary>
+        public static string Time1800 {
+            get {
+                return ResourceManager.GetString("Time1800", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Six thirty.
+        /// </summary>
+        public static string Time1830 {
+            get {
+                return ResourceManager.GetString("Time1830", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seven o&apos;clock.
+        /// </summary>
+        public static string Time1900 {
+            get {
+                return ResourceManager.GetString("Time1900", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seven thirty.
+        /// </summary>
+        public static string Time1930 {
+            get {
+                return ResourceManager.GetString("Time1930", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eight o&apos;clock.
+        /// </summary>
+        public static string Time2000 {
+            get {
+                return ResourceManager.GetString("Time2000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Today.
         /// </summary>
         public static string TodayName {

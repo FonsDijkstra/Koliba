@@ -126,6 +126,24 @@
   <data name="ReservationsHeader" xml:space="preserve">
     <value>Reserveren</value>
   </data>
+  <data name="Time1730" xml:space="preserve">
+    <value>Half zes</value>
+  </data>
+  <data name="Time1800" xml:space="preserve">
+    <value>Zes uur</value>
+  </data>
+  <data name="Time1830" xml:space="preserve">
+    <value>Half zeven</value>
+  </data>
+  <data name="Time1900" xml:space="preserve">
+    <value>Zeven uur</value>
+  </data>
+  <data name="Time1930" xml:space="preserve">
+    <value>Half acht</value>
+  </data>
+  <data name="Time2000" xml:space="preserve">
+    <value>Acht uur</value>
+  </data>
   <data name="TodayName" xml:space="preserve">
     <value>Vandaag</value>
   </data>

@@ -27,10 +27,10 @@ namespace Koliba.Apps.Controllers
         }
 
         [HttpPost]
-        [Route("api/reservation/times/{nofSpecificTimes}")]
-        public IEnumerable<TimeSpan> Times([FromBody] OpeningDate date, int nofSpecificTimes)
+        [Route("api/reservation/times")]
+        public IEnumerable<ReservationTime> Times([FromBody] OpeningDate date)
         {
-            return new TimeSpan[0];
+            return new Reservations().ReservationTimes(DateTime.Now.Add(TimeSpan.FromMinutes(30)), date);
         }
     }
 }
