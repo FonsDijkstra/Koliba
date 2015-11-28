@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Koliba.Apps.Filters;
 
 namespace Koliba.Apps
 {
@@ -7,6 +8,7 @@ namespace Koliba.Apps
         public static void Register(HttpConfiguration config)
         {
             config.MapHttpAttributeRoutes();
+            config.Filters.Add(new CultureInfoFilterAttribute());
         }
     }
 }

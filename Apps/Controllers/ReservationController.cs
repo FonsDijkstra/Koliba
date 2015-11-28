@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web.Http;
 using Koliba.Resources;
 using Koliba.Business;
-using System.Threading;
 
 namespace Koliba.Apps.Controllers
 {
@@ -15,15 +14,6 @@ namespace Koliba.Apps.Controllers
         [Route("api/reservation/resources")]
         public IDictionary<string, object> GetResources()
         {
-            CultureInfo culture;
-            IEnumerable<string> header;
-            if (ActionContext.Request.Headers.TryGetValues("Accept-Language", out header) && header.Any()) {
-                culture = CultureInfo.GetCultureInfo(header.First());
-            } else {
-                culture = CultureInfo.InvariantCulture;
-            }
-            Thread.CurrentThread.CurrentUICulture = culture;
-            // TODO: splitsen
             return Resources.Resources.ResourceManager
                 .AsEnumerable(CultureInfo.CurrentUICulture)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
