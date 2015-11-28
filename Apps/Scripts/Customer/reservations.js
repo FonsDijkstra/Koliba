@@ -49,7 +49,10 @@
 
     var SpecificDate = React.createClass({
         onClick: function () {
-
+            ReactDOM.render(
+                React.createElement(TimeSelector, { 'date': this.props.date }),
+                document.getElementById('reservations-content')
+            );
         },
         render: function () {
             return (
@@ -60,13 +63,45 @@
     });
 
     var TimeSelector = React.createClass({
+        getInitialState: function () {
+            return { times: [] };
+        },
+        componentDidMount: function () {
+            var url = 'api/reservation/times/5';
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(this.props.date),
+                contentType: "application/json; charset=utf-8",
+                processData: false,
+                success: function (data) {
+                    this.setState({ times: data });
+                }.bind(this),
+                error: function (xhr, status, err) {
+                    console.error(url, status, err.toString());
+                }.bind(this)
+            });
+        },
         render: function () {
-            var specificDates = this.state.dates.map(function (date) {
-                return React.createElement(SpecificDate, { 'key': date.Name, 'date': date });
+            var specificTimes = this.state.times.map(function (time) {
+                return React.createElement(SpecificTime, { 'key': time.Name, 'time': time });
             });
             return (
                 React.createElement('div', null,
-                    specificDates)
+                    specificTimes)
+            );
+        }
+    });
+
+    var SpecificTime = React.createClass({
+        onClick: function () {
+
+        },
+        render: function () {
+            return (
+                React.createElement('button', { className: 'specificTime', 'onClick': this.onClick },
+                    this.props.time.Name)
             );
         }
     });
