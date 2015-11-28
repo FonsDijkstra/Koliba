@@ -23,16 +23,12 @@
             return { dates: [] };
         },
         componentDidMount: function () {
-            var url = 'api/reservation/dates/5';
             $.ajax({
-                url: url,
+                url: 'api/reservation/dates/5',
                 dataType: 'json',
                 cache: false,
                 success: function (data) {
                     this.setState({ dates: data });
-                }.bind(this),
-                error: function (xhr, status, err) {
-                    console.error(url, status, err.toString());
                 }.bind(this)
             });
         },
@@ -67,9 +63,8 @@
             return { times: [] };
         },
         componentDidMount: function () {
-            var url = 'api/reservation/times/5';
             $.ajax({
-                url: url,
+                url: 'api/reservation/times/5',
                 type: 'POST',
                 dataType: 'json',
                 data: JSON.stringify(this.props.date),
@@ -77,9 +72,6 @@
                 processData: false,
                 success: function (data) {
                     this.setState({ times: data });
-                }.bind(this),
-                error: function (xhr, status, err) {
-                    console.error(url, status, err.toString());
                 }.bind(this)
             });
         },

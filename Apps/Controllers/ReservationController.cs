@@ -5,8 +5,6 @@ using System.Linq;
 using System.Web.Http;
 using Koliba.Resources;
 using Koliba.Business;
-using System.Web;
-using Newtonsoft.Json;
 
 namespace Koliba.Apps.Controllers
 {
