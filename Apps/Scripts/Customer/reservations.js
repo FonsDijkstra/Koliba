@@ -2,8 +2,7 @@
 
     var ReservationsBox = React.createClass({
         onClick: function () {
-            history.pushState(new reservationState(1, null, null), 'Resrv')
-            dateSelector();
+            pushState(dateSelector, null, 'rsv-dates');
         },
         render: function () {
             return (
@@ -41,8 +40,7 @@
 
     var SpecificDate = React.createClass({
         onClick: function () {
-            history.pushState(new reservationState(2, this.props.date), 'Dates')
-            timeSelector(this.props.date);
+            pushState(timeSelector, [this.props.date], 'rsv-times');
         },
         render: function () {
             return (
@@ -118,27 +116,38 @@
         
     }
 
-    function reservationState(step, date, time) {
-        this.step = step;
-        this.date = date;
-        this.time = time;
+    function pushState(func, args, title) {
+        setState(func, args);
+        history.pushState(new appState(func.name, args), title);
+    }
+
+    function popState(state) {
+        if (state == null) {
+            setState(reservationsBox, null);
+        } else {
+            var func = null;
+            if (state.name === dateSelector.name) {
+                func = dateSelector;
+            } else if (state.name == timeSelector.name) {
+                func = timeSelector;
+            } else {
+                func = reservationsBox;
+            }
+            setState(func, state.args);
+        }
+    }
+
+    function setState(func, args) {
+        func.apply(null, args);
+    }
+
+    function appState(name, args) {
+        this.name = name;
+        this.args = args;
     }
 
     window.onpopstate = function (event) {
-        console.log(event.state);
-        if (event.state != null) {
-            if (event.state.step === 1) {
-                dateSelector();
-            }
-            if (event.state.step === 2) {
-                timeSelector(event.state.date);
-            }
-            if (event.state.step === 3) {
-                    
-            }
-        } else {
-            reservationsBox();
-        }
+        popState(event.state);
     };
 
     reservationsBox();
